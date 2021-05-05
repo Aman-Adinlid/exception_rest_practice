@@ -17,6 +17,11 @@ public class RecordDuplicateException extends Exception {
 
     public String getParamName() {
         return paramName;
+
+
     }
 
+    public String getDescription() {
+        return description;
+    }
 }
