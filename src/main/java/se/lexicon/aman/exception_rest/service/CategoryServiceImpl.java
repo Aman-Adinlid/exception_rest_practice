@@ -2,6 +2,7 @@ package se.lexicon.aman.exception_rest.service;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import se.lexicon.aman.exception_rest.dto.CategoryDto;
 import se.lexicon.aman.exception_rest.entity.Category;
 import se.lexicon.aman.exception_rest.exception.ArgumentException;
@@ -14,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class CategoryServiceImpl implements CategoryService {
 
     CategoryRepository categoryRepository;
@@ -32,7 +34,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryDto save(CategoryDto dto) throws RecordDuplicateException {
         if (dto == null) throw new ArgumentException("CategoryDto is null");
-        if (dto.getId() <= 0) throw new ArgumentException("Category id is null");
+        if (dto.getId() != 0) throw new ArgumentException("Category id is null");
         Category category = modelMapper.map(dto, Category.class);
         categoryRepository.findByNameIgnoreCase(dto.getName()).orElseThrow(() ->
                 new RecordDuplicateException("Category name should not be duplicate"));

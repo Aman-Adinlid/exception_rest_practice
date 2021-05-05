@@ -1,5 +1,6 @@
 package se.lexicon.aman.exception_rest.service;
 
+
 import se.lexicon.aman.exception_rest.dto.CategoryDto;
 import se.lexicon.aman.exception_rest.exception.RecordDuplicateException;
 import se.lexicon.aman.exception_rest.exception.RecordNotFoundException;
